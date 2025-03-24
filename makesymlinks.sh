@@ -29,3 +29,25 @@ for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
+
+##########################
+# Bootstrap LaunchAgents #
+##########################
+TEMPLATE="$HOME/dotfiles/launchagents/com.fswatch.plist.template"
+RENDERED="$HOME/Library/LaunchAgents/com.dotfiles.fswatch.plist"
+SCRIPT_PATH="$HOME/dotfiles/bin/watch_splice.sh"
+
+# Make sure the script is executable
+chmod +x "$SCRIPT_PATH"
+
+# Create LaunchAgents folder if it doesn't exist
+mkdir -p "$HOME/Library/LaunchAgents"
+
+# Replace __SCRIPT_PATH__ with the actual path
+sed "s|__SCRIPT_PATH__|$SCRIPT_PATH|" "$TEMPLATE" > "$RENDERED"
+
+# Load (or reload) the launch agent
+launchctl unload "$RENDERED" 2>/dev/null || true
+launchctl load "$RENDERED"
+
+echo "✅ fswatch launch agent installed and started."
