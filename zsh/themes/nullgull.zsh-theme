@@ -1,6 +1,6 @@
 local user='%{$fg[magenta]%}%n🐼%{$fg[magenta]%}%{$reset_color%}'
 local pwd='%{$fg[blue]%}%~%{$reset_color%}'
-local dt='(%D{%y-%m-%d %H:%M:%S})'
+local dt='%{$fg[blue]%}(%D{%y-%m-%d %H:%M:%S})%{$reset_color%}'
 local return_code='%(?..%{$fg[red]%}%? ↵%{$reset_color%})'
 local git_branch='$(git_prompt_status)%{$reset_color%}$(git_prompt_info)%{$reset_color%}'
 
