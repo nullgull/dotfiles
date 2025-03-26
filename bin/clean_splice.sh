@@ -10,7 +10,7 @@ if [[ ! -d "$SRC_DIR" ]]; then
   exit 1
 fi
 
-DATE_PREFIX=$(date +"%d%m%y")
+DATE_PREFIX=$(date +"%y%m%d")
 
 get_next_seq() {
   local max_seq=-1
@@ -18,11 +18,11 @@ get_next_seq() {
     filename=$(basename "$existing_file")
     if [[ $filename =~ ^${DATE_PREFIX}_([0-9]{2})_ ]]; then
       seq=${BASH_REMATCH[1]}
-      (( seq > max_seq )) && max_seq=$seq
+      (( ${seq#0} > ${max_seq#0} )) && max_seq=$seq
     fi
   done < <(find "$DEST_DIR" -type f -name "${DATE_PREFIX}_??_*")
 
-  printf "%02d" $((max_seq + 1))
+  printf "%02d" $((${max_seq#0} + 1))
 }
 
 find "$SRC_DIR" -type f -print0 | while IFS= read -r -d '' file; do
