@@ -53,11 +53,14 @@ automatically-unhide-macos-hidden-apps = false
   preset = 'qwerty'
 
 [workspace-to-monitor-force-assignment]
-  main = 'main'
-  main_extra = 'main'
-  secondary = 'secondary'
-  obsidian = 'secondary'
-  secondary_extra = 'secondary'
+  0_0_main = 'main'
+  0_1_ableton = 'main'
+  0_2_extra = 'main'
+  1_0_obsidian = 'secondary'
+  1_1_terminal = 'secondary'
+  1_2_music = 'secondary'
+  1_3_calendar = 'secondary'
+  1_4_extra = 'secondary'
 
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
@@ -128,26 +131,32 @@ automatically-unhide-macos-hidden-apps = false
   alt-equal = 'resize smart +50'
 
   # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-  alt-a = 'workspace main'
-  alt-s = 'workspace main_extra'
-  alt-z = 'workspace obsidian'
-  alt-x = 'workspace secondary'
-  alt-c = 'workspace secondary_extra'
+  alt-a = 'workspace 0_0_main'
+  alt-s = 'workspace 0_1_ableton'
+  alt-d = 'workspace 0_2_extra'
+  alt-z = 'workspace 1_0_obsidian'
+  alt-x = 'workspace 1_1_terminal'
+  alt-c = 'workspace 1_2_music'
+  alt-v = 'workspace 1_3_calendar'
+  alt-b = 'workspace 1_4_extra'
 
 
   # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-  alt-shift-a = 'move-node-to-workspace main'
-  alt-shift-s = 'move-node-to-workspace main_extra'
-  alt-shift-z = 'move-node-to-workspace obsidian'
-  alt-shift-x = 'move-node-to-workspace secondary'
-  alt-shift-c = 'move-node-to-workspace secondary_extra'
+  alt-shift-a = 'move-node-to-workspace 0_0_main'
+  alt-shift-s = 'move-node-to-workspace 0_1_ableton'
+  alt-shift-d = 'move-node-to-workspace 0_2_extra'
+  alt-shift-z = 'move-node-to-workspace 1_0_obsidian'
+  alt-shift-x = 'move-node-to-workspace 1_1_terminal'
+  alt-shift-c = 'move-node-to-workspace 1_2_music'
+  alt-shift-v = 'move-node-to-workspace 1_3_calendar'
+  alt-shift-b = 'move-node-to-workspace 1_4_extra'
 
 
   # Custom commands
   alt-j = 'macos-native-fullscreen'
   alt-k = 'fullscreen'
   alt-m = 'macos-native-minimize'
-  alt-b = 'balance-sizes'
+  alt-p = 'balance-sizes'
 
   # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
   alt-tab = 'workspace-back-and-forth'
@@ -183,28 +192,39 @@ automatically-unhide-macos-hidden-apps = false
 # Messages
 [[on-window-detected]]
   if.app-id = 'com.apple.MobileSMS'
-  if.during-aerospace-startup = true
-  run = ['move-node-to-workspace secondary']
+  run = ['move-node-to-workspace 1_3_calendar']
 
 # Finder
 [[on-window-detected]]
   if.app-id = 'com.apple.finder'
-  run = ['layout floating', 'move-node-to-workspace main']
+  run = ['layout floating', 'move-node-to-workspace 0_0_main']
 
 # Obsidian
 [[on-window-detected]]
   if.app-id = 'md.obsidian'
-  if.during-aerospace-startup = true
-  run = ['move-node-to-workspace obsidian']
+  run = ['move-node-to-workspace 1_0_obsidian']
 
 # Protonmail
 [[on-window-detected]]
   if.app-id = 'ch.protonmail.desktop'
-  if.during-aerospace-startup = true
-  run = ['move-node-to-workspace obsidian']
+  run = ['move-node-to-workspace 1_3_calendar']
 
 # Ableton
 [[on-window-detected]]
   if.app-id = 'com.ableton.live'
-  if.during-aerospace-startup = true
-  run = ['move-node-to-workspace main_extra']
+  run = ['move-node-to-workspace 0_1_ableton']
+
+# Splice
+[[on-window-detected]]
+  if.app-id = 'com.splice.Splice'
+  run = ['move-node-to-workspace 1_2_music']
+
+# iTerm2
+[[on-window-detected]]
+  if.app-id = 'com.googlecode.iterm2'
+  run = ['move-node-to-workspace 1_1_terminal']
+
+# Notion
+[[on-window-detected]]
+  if.app-id = 'notion.id'
+  run = ['move-node-to-workspace 1_4_extra']
