@@ -189,15 +189,15 @@ automatically-unhide-macos-hidden-apps = false
 # Bind applications to workspaces
 # Run aerospace list-apps to find the IDs of all running apps to be used in the below configs
 #
+# Ableton
+[[on-window-detected]]
+  if.app-id = 'com.ableton.live'
+  run = ['move-node-to-workspace 0_1_ableton']
+
 # Brave
 [[on-window-detected]]
   if.app-id = 'com.brave.Browser'
   run = ['move-node-to-workspace 0_0_main']
-
-# Messages
-[[on-window-detected]]
-  if.app-id = 'com.apple.MobileSMS'
-  run = ['move-node-to-workspace 1_3_calendar']
 
 # Finder
 [[on-window-detected]]
@@ -209,6 +209,21 @@ automatically-unhide-macos-hidden-apps = false
   if.app-id = 'com.jetbrains.intellij'
   run = ['move-node-to-workspace 0_0_main']
 
+# iTerm2
+[[on-window-detected]]
+  if.app-id = 'com.googlecode.iterm2'
+  run = ['move-node-to-workspace 1_1_terminal']
+
+# Messages
+[[on-window-detected]]
+  if.app-id = 'com.apple.MobileSMS'
+  run = ['move-node-to-workspace 1_3_calendar']
+
+# Notion
+[[on-window-detected]]
+  if.app-id = 'notion.id'
+  run = ['move-node-to-workspace 1_4_extra']
+
 # Obsidian
 [[on-window-detected]]
   if.app-id = 'md.obsidian'
@@ -219,22 +234,7 @@ automatically-unhide-macos-hidden-apps = false
   if.app-id = 'ch.protonmail.desktop'
   run = ['move-node-to-workspace 1_3_calendar']
 
-# Ableton
-[[on-window-detected]]
-  if.app-id = 'com.ableton.live'
-  run = ['move-node-to-workspace 0_1_ableton']
-
 # Splice
 [[on-window-detected]]
   if.app-id = 'com.splice.Splice'
   run = ['move-node-to-workspace 1_2_music']
-
-# iTerm2
-[[on-window-detected]]
-  if.app-id = 'com.googlecode.iterm2'
-  run = ['move-node-to-workspace 1_1_terminal']
-
-# Notion
-[[on-window-detected]]
-  if.app-id = 'notion.id'
-  run = ['move-node-to-workspace 1_4_extra']
