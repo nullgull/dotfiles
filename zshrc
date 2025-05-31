@@ -1,9 +1,6 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export PATH="/Applications/IntelliJ IDEA CE.app/Contents/MacOS:$PATH"
-
-# Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+export SPECTRE_USERNAME="$(< $HOME/.spectre.d/user.txt)"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -109,3 +106,11 @@ alias cc="pbpaste | sed \"s/$(printf '\u00a0')/ /g\" | pbcopy"
 
 # Open current directory in IntelliJ
 alias ij='nohup idea . >/dev/null 2>&1 &'
+
+# Run password function
+alias pw='get_password'
+
+# Source Zsh functions
+for f in "$HOME/dotfiles/zsh/functions/"*.zsh; do
+  source "$f"
+done
