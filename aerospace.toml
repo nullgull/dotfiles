@@ -53,14 +53,14 @@ automatically-unhide-macos-hidden-apps = false
   preset = 'qwerty'
 
 [workspace-to-monitor-force-assignment]
-  0_0_main = 'main'
-  0_1_ableton = 'main'
-  0_2_extra = 'main'
-  1_0_obsidian = 'secondary'
-  1_1_terminal = 'secondary'
-  1_2_music = 'secondary'
-  1_3_calendar = 'secondary'
-  1_4_extra = 'secondary'
+  0_0_main = ['DELL U3818DW', 'main']
+  0_1_ableton = ['DELL U3818DW', 'main']
+  0_2_extra = ['DELL U3818DW', 'main']
+  1_0_obsidian = ['^built-in retina display$', 'secondary']
+  1_1_terminal = ['^built-in retina display$', 'secondary']
+  1_2_music = ['^built-in retina display$', 'secondary']
+  1_3_calendar = ['^built-in retina display$', 'secondary']
+  1_4_extra = ['^built-in retina display$', 'secondary']
 
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
@@ -189,6 +189,11 @@ automatically-unhide-macos-hidden-apps = false
 # Bind applications to workspaces
 # Run aerospace list-apps to find the IDs of all running apps to be used in the below configs
 #
+# Brave
+[[on-window-detected]]
+  if.app-id = 'com.brave.Browser'
+  run = ['move-node-to-workspace 0_0_main']
+
 # Messages
 [[on-window-detected]]
   if.app-id = 'com.apple.MobileSMS'
@@ -198,6 +203,11 @@ automatically-unhide-macos-hidden-apps = false
 [[on-window-detected]]
   if.app-id = 'com.apple.finder'
   run = ['layout floating', 'move-node-to-workspace 0_0_main']
+
+# IntelliJ
+[[on-window-detected]]
+  if.app-id = 'com.jetbrains.intellij'
+  run = ['move-node-to-workspace 0_0_main']
 
 # Obsidian
 [[on-window-detected]]
