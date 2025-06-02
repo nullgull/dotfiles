@@ -6,6 +6,7 @@
 # https://github.com/FelixKratz/dotfiles
 
 PLUGIN_DIR="$HOME/dotfiles/sketchybar/plugins"
+FONT_FACE="RobotoMono Nerd Font"
 
 ##### Bar Appearance #####
 # Configuring the general appearance of the bar.
@@ -24,8 +25,8 @@ sketchybar --bar position=top height=40 blur_radius=30 color=0x40000000
 default=(
   padding_left=5
   padding_right=5
-  icon.font="Hack Nerd Font:Bold:17.0"
-  label.font="Hack Nerd Font:Bold:14.0"
+  icon.font="$FONT_FACE:Bold:17.0"
+  label.font="$FONT_FACE:Bold:14.0"
   icon.color=0xffffffff
   label.color=0xffffffff
   icon.padding_left=4
