@@ -4,14 +4,16 @@ get_password() {
 		return 1
 	fi
 
+	local SPECTRE_USERNAME="$(< "$HOME/.spectre.d/user.txt")"
+
+	if [ -z "$SPECTRE_USERNAME" ]; then
+		echo "❌ Error: SPECTRE_USERNAME not set."
+		return 1
+	fi
+
 	local SITE_NAME="$1"
 	local TEST_PW="ThisIsForTestingOnly"
 	local TEST_PW_FILE="$HOME/.spectre.d/test_pw.txt"
-
-	if [ -z "$SPECTRE_USERNAME" ]; then
-		echo "Error: SPECTRE_USERNAME environment variable not set."
-		return 1
-	fi
 
 	while [ -z "$SPECTRE_SECRET" ]; do
 		read -s "input_secret?Enter Spectre secret: "
@@ -27,7 +29,7 @@ get_password() {
 		fi
 	done
 
-	local password=$(spectre -S "$SPECTRE_SECRET" "$SITE_NAME" 2>/dev/null)
+	local password=$(spectre -u "$SPECTRE_USERNAME" -S "$SPECTRE_SECRET" "$SITE_NAME" 2>/dev/null)
 
 	if [ -z "$password" ]; then
 		echo "❌ Failed to retrieve password for $SITE_NAME."

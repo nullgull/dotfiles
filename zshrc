@@ -1,7 +1,6 @@
 export PATH="/Applications/IntelliJ IDEA CE.app/Contents/MacOS:$PATH"
 export PATH="$HOME/Library/Python/3.9/bin:$PATH"
 export ZSH="$HOME/.oh-my-zsh"
-export SPECTRE_USERNAME="$(< $HOME/.spectre.d/user.txt)"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
