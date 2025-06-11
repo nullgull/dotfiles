@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+import sys
+import subprocess
+from pathlib import Path
+
+
+def main():
+	if len(sys.argv) != 3:
+		print("Usage: yt2wav <youtube_url> <output_file>")
+		sys.exit(1)
+
+	url = sys.argv[1]
+	file_name = sys.argv[2]
+
+	output_path = Path.home() / "Music" / "references" / f"{file_name}.%(ext)s"
+
+	command = [
+		"yt-dlp",
+		"-f", "bestaudio",
+		"--extract-audio",
+		"--audio-format", "wav",
+		"--audio-quality", "0",
+		"-o", str(output_path),
+		url
+	]
+
+	try:
+		subprocess.run(command, check=True)
+		print(f"🎶🎵 Saved to {file_name}.wav 🎵🎶")
+	except subprocess.CalledProcessError:
+		print("❌ Error downloading or converting audio.")
+		sys.exit(1)
+
+
+if __name__ == "__main__":
+	main()
