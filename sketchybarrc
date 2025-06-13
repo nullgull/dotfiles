@@ -19,7 +19,17 @@ ICON_COLOR="0xffe835f7"
 # If you are looking for other colors, see the color picker:
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-sketchybar --bar position=top height=40 blur_radius=30 color=0x40000000
+# Workaround for now to set correct bar height on macbook
+# TODO: move bar creation logic into a separate function
+MONITOR=$(/opt/homebrew/bin/aerospace list-monitors | awk 'NR==1 {print $3}')
+
+if [[ "$MONITOR" == "Built-in" ]]; then
+  BAR_HEIGHT=40
+else
+  BAR_HEIGHT=25
+fi
+
+sketchybar --bar position=top height=$BAR_HEIGHT blur_radius=30 color=0x40000000
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
@@ -70,7 +80,7 @@ sketchybar --add item clock right \
 	--set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
 	--subscribe battery system_woke power_source_change \
 	--add item cpu right \
-	--set cpu update_freq=2 icon= script="$PLUGIN_DIR/cpu.sh"
+	--set cpu update_freq=2 icon=  script="$PLUGIN_DIR/cpu.sh"
 
 ##### Aerospace workspace indicator & toggle #####
 sketchybar --add event aerospace_workspace_change
