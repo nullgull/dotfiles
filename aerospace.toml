@@ -12,7 +12,8 @@ after-login-command = []
 after-startup-command = [
   'exec-and-forget borders active_color=0xffdb38ee inactive_color=0xff4e10ac width=5.0',
   'layout tiles horizontal vertical',
-  'exec-and-forget sketchybar'
+  'exec-and-forget sketchybar',
+  'exec-and-forget sketchybar --reload'
 ]
 
 # Notify Sketchybar about workspace change
