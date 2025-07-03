@@ -1,0 +1,42 @@
+#!/usr/bin/env python3
+import sys
+import subprocess
+from pathlib import Path
+
+def main():
+    if len(sys.argv) != 3:
+        print("Usage: ytvid <youtube_url> <output_name_without_extension>")
+        sys.exit(1)
+
+    url = sys.argv[1]
+    base_name = sys.argv[2]
+
+    output_dir = Path.home() / "Movies" / "downloads"
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    output_template = output_dir / f"{base_name}.%(ext)s"
+
+    command = [
+        "yt-dlp",
+        "-f", "bestvideo+bestaudio",
+        "--recode-video", "mp4",  # Force re-encode to mp4
+        "-o", str(output_template),
+        url
+    ]
+
+    try:
+        subprocess.run(command, check=True)
+    except subprocess.CalledProcessError:
+        print("❌ Failed to download the video.")
+        sys.exit(1)
+
+    for ext in ("mp4", "webm", "mkv", "mov"):
+        candidate = output_dir / f"{base_name}.{ext}"
+        if candidate.exists():
+            print(f"✅ Video saved to: {candidate}")
+            break
+    else:
+        print("⚠️ Video downloaded, but final file not found.")
+
+if __name__ == "__main__":
+    main()
