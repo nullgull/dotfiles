@@ -111,6 +111,12 @@ alias ij='nohup idea . >/dev/null 2>&1 &'
 # Run password function
 alias pw='get_password'
 
+# Reload SketchyBar
+alias sr='sketchybar --reload'
+
+# Fix Splice window tiling
+alias fixsplice="aerospace focus --window-id $(aerospace list-windows --all | grep -m 1 'Splice Desktop' | awk '{print $1}') && aerospace layout floating tiling && aerospace layout tiles horizontal vertical"
+
 # Source Zsh functions
 for f in "$HOME/dotfiles/zsh/functions/"*.zsh; do
   source "$f"

@@ -241,6 +241,11 @@ automatically-unhide-macos-hidden-apps = false
   if.app-id = 'md.obsidian'
   run = ['move-node-to-workspace 1_0_obsidian']
 
+# OrcaSlicer
+[[on-window-detected]]
+  if.app-id = 'com.softfever3d.orca-slicer'
+  run = ['move-node-to-workspace 0_2_extra']
+
 # Protonmail
 [[on-window-detected]]
   if.app-id = 'ch.protonmail.desktop'
@@ -249,4 +254,9 @@ automatically-unhide-macos-hidden-apps = false
 # Splice
 [[on-window-detected]]
   if.app-id = 'com.splice.Splice'
+  run = ['move-node-to-workspace 1_2_music']
+
+# Spotify
+[[on-window-detected]]
+  if.app-id = 'com.spotify.client'
   run = ['move-node-to-workspace 1_2_music']
