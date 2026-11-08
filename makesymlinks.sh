@@ -8,7 +8,13 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="zshrc aerospace.toml gitignore config/sketchybar/sketchybarrc"    # list of files/folders to symlink in homedir
+files="
+zshrc*
+gitignore
+aerospace.toml
+sketchybarrc|config/sketchybar/sketchybarrc
+hammerspoon.lua|hammerspoon/init.lua
+"
 
 ##########
 
@@ -23,17 +29,33 @@ cd $dir
 echo "...done"
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks
-for file in $files; do
-	echo "Moving any existing dotfiles from ~ to $olddir"
-	if [ -e ~/.$file ] || [ -L ~/.$file ]; then
-		mv ~/.$file $olddir/
+for entry in $files; do
+  if [[ "$entry" == *"|"* ]]; then
+    src_rel="${entry%%|*}"
+    dst_rel="${entry##*|}"
+  else
+    src_rel="$(basename "$entry")"
+    dst_rel="$entry"
+  fi
+
+  src="$dir/$src_rel"
+  dst="$HOME/.$dst_rel"
+
+	# Skip if symlink already points to the correct file
+	if [[ -L "$dst" && "$(readlink "$dst")" == "$src" ]]; then
+			echo "Already linked: $dst"
+			continue
 	fi
 
-	cleaned=$(basename "$file")
+  echo "Moving any existing $dst to $olddir"
+  if [ -e "$dst" ] || [ -L "$dst" ]; then
+    mkdir -p "$olddir/$(dirname "$dst_rel")"
+    mv "$dst" "$olddir/$(dirname "$dst_rel")/"
+  fi
 
-	echo "Creating symlink: ~/dotfiles/$cleaned → ~/.$file"
-	mkdir -p "$(dirname ~/.$file)"
-	ln -sf $dir/$cleaned ~/.$file
+  echo "Creating symlink: $src → $dst"
+  mkdir -p "$(dirname "$dst")"
+  ln -sfn "$src" "$dst"
 done
 
 ##########################

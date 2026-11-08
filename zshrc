@@ -117,6 +117,12 @@ alias sr='sketchybar --reload'
 # Fix Splice window tiling
 alias fixsplice="aerospace focus --window-id $(aerospace list-windows --all | grep -m 1 'Splice Desktop' | awk '{print $1}') && aerospace layout floating tiling && aerospace layout tiles horizontal vertical"
 
+# Eject USB stick
+alias e="eject_usb.sh"
+
+# Load machine-specific configuration
+[[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
+
 # Source Zsh functions
 for f in "$HOME/dotfiles/zsh/functions/"*.zsh; do
   source "$f"
