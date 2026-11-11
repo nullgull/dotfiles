@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-if [[ -z "${USB_STICK_NAME:-}" ]]; then
+if [[ -z "${USB_VOLUME_NAME:-}" ]]; then
     echo "❌ ERROR: USB_STICK_NAME env variable is not set"
     exit 1
 fi
