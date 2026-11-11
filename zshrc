@@ -120,6 +120,9 @@ alias fixsplice="aerospace focus --window-id $(aerospace list-windows --all | gr
 # Eject USB stick
 alias e="eject_usb.sh"
 
+# Restart Aerospace
+alias ar='osascript -e '\''quit app "AeroSpace"'\'' && open -a AeroSpace'
+
 # Load machine-specific configuration
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
 
