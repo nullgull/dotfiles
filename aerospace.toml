@@ -65,11 +65,11 @@ automatically-unhide-macos-hidden-apps = false
   0_0_main = ['DELL U3818DW', 'main']
   0_1_ableton = ['DELL U3818DW', 'main']
   0_2_extra = ['DELL U3818DW', 'main']
-  1_0_obsidian = ['^built-in retina display$', 'secondary']
-  1_1_terminal = ['^built-in retina display$', 'secondary']
-  1_2_music = ['^built-in retina display$', 'secondary']
-  1_3_calendar = ['^built-in retina display$', 'secondary']
-  1_4_extra = ['^built-in retina display$', 'secondary']
+  1_0_obsidian = ['DELL U2718Q', '^built-in retina display$', 'secondary']
+  1_1_terminal = ['DELL U2718Q', '^built-in retina display$', 'secondary']
+  1_2_music = ['DELL U2718Q', '^built-in retina display$', 'secondary']
+  1_3_calendar = ['DELL U2718Q', '^built-in retina display$', 'secondary']
+  1_4_extra = ['DELL U2718Q', '^built-in retina display$', 'secondary']
 
 # Gaps between windows (inner-*) and between monitor edges (outer-*).
 # Possible values:
