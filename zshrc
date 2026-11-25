@@ -123,6 +123,9 @@ alias e="eject_usb.sh"
 # Restart Aerospace
 alias ar='osascript -e '\''quit app "AeroSpace"'\'' && open -a AeroSpace'
 
+# Force tiling windows
+alias t='aerospace list-windows --all --format '%{window-id}' | xargs -n1 aerospace layout tiling --window-id'
+
 # Load machine-specific configuration
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
 
