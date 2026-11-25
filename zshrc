@@ -129,6 +129,9 @@ alias t='aerospace list-windows --all --format '%{window-id}' | xargs -n1 aerosp
 # Load machine-specific configuration
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
 
+# Put machine to sleep
+alias s='pmset sleepnow'
+
 # Source Zsh functions
 for f in "$HOME/dotfiles/zsh/functions/"*.zsh; do
   source "$f"
